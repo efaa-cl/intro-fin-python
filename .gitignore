@@ -3,6 +3,7 @@ bin-debug/
 bin-release/
 [Oo]bj/
 [Bb]in/
+.ipynb_checkpoints/
 
 # Other files and folders
 .settings/
