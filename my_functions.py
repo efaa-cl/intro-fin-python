@@ -1,3 +1,6 @@
+import bisect
+
+
 def vp_bono(flujos, plazos, tasa):
     """
     Calcula el valor presente de un bono dada una tasa de descuento.
@@ -55,3 +58,15 @@ def vp_bono_2(flujos, plazos, tasa):
         if p > 0:
             result += f * (1 + tasa)**(-p / 365.0)
     return result
+
+
+def find_le(a, x):
+    """
+    Find rightmost value in a less than or equal to x.
+    
+    Esta función está copiada directamente de la documentación de la librería `bisect`.
+    """
+    i = bisect.bisect_right(a, x)
+    if i:
+        return a[i-1]
+    raise ValueError("x is less than leftmost element in a.")
