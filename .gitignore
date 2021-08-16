@@ -6,6 +6,7 @@ bin-release/
 [Bb]in/
 .ipynb_checkpoints/
 __pycache__/
+output/*.*
 
 # Other files and folders
 .settings/
