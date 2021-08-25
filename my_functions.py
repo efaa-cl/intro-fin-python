@@ -75,6 +75,18 @@ def find_le(a, x):
     if i:
         return a[i-1]
     raise ValueError("x is less than leftmost element in a.")
+    
+    
+def find_gt(a, x):
+    """
+    Find leftmost value greater than x
+    
+    Esta función está copiada directamente de la documentación de la librería `bisect`.
+    """
+    i = bisect_right(a, x)
+    if i != len(a):
+        return a[i]
+    raise ValueError("x is greater than rightmost element in a.")
 
 
 def valor_presente(fecha_valor, fechas, flujos, tasa):
