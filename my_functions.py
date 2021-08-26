@@ -179,6 +179,9 @@ def valorizador_rf(fecha_valor, nemotecnico, tir, monto, bonos, tablas_desarroll
     tablas_desarrollo: pandas.DataFrame
         Contiene las columnas `nemotecnico`, `interes`, `amortizacion` y `fecha_vcto_cupon`.
         
+    ufs: Dict
+        Key: fecha, value: valor de la UF a esa fecha.
+        
     Returns
     -------
     
