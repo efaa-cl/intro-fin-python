@@ -1,9 +1,13 @@
 import datetime
 import bisect
 import numpy as np
+import pandas as pd
+from enum import Enum
 
 import autograd.numpy as agnp
 from autograd import grad
+
+from finrisk import QC_Financial_3 as Qcf
 
 
 def vp_bono(flujos, plazos, tasa):
@@ -251,3 +255,36 @@ def valorizador_rf(fecha_valor, nemotecnico, tir, monto, bonos, tablas_desarroll
         'duracion': dur,
         'convexidad': conv
     }
+
+
+class TipoPata(Enum):
+    FIJA = 0
+    IBOR = 1
+    ICPCLP = 2
+    ICPCLF = 3
+    SIMPLE = 4
+    FIJAMCC = 5
+    
+    
+def leg_as_dataframe(pata, tipo_pata):
+    switcher = {
+        TipoPata.FIJA: 'FixedRateCashflow',
+        TipoPata.IBOR: 'IborCashflow',
+        TipoPata.ICPCLP: 'IcpClpCashflow',
+        TipoPata.ICPCLF: 'IcpClfCashflow',
+        TipoPata.SIMPLE: 'SimpleCashflow'
+    }
+    
+    if tipo_pata == TipoPata.FIJAMCC:
+        cols = ['fecha_inicial', 'fecha_final', 'fecha_pago', 'nominal', 'amortizacion',
+                    'interes', 'amort_es_cashflow', 'flujo_moneda_nocional',
+                    'moneda_nocional', 'valor_tasa', 'tipo_tasa', 'fecha_fixing_fx',
+                    'moneda_pago', 'codigo_indice_fx', 'valor_indice_fx',
+                    'amort_moneda_pago', 'interes_moneda_pago']
+    else:
+        cols = list(Qcf.get_column_names(switcher[tipo_pata], ''))
+        
+    rows =[Qcf.show(cashflow) for cashflow in [pata.get_cashflow_at(i) for i in range(pata.size())]]
+    df = pd.DataFrame(rows)
+    df.columns = cols
+    return df
