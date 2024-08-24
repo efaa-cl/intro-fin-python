@@ -1,0 +1,10 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: 01-01_a_intro_python
+- file: 01-01_b_intro-python
+- file: 01-01_c_intro-python
+- file: 01-01_d_intro-python
