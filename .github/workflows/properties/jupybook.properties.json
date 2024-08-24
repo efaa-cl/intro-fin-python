@@ -1,0 +1,6 @@
+{
+  "name": "Jupybook",
+  "description": "Deploy a Jupyter Books site.",
+  "iconName": "jupy",
+  "categories": ["Pages", "Jupyter"]
+}
