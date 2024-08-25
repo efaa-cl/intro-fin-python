@@ -3,11 +3,9 @@ import bisect
 import numpy as np
 import pandas as pd
 from enum import Enum
-
-import autograd.numpy as agnp
 from autograd import grad
 
-from finrisk import QC_Financial_3 as Qcf
+import qcfinancial as qcf
 
 
 def vp_bono(flujos, plazos, tasa):
@@ -282,9 +280,9 @@ def leg_as_dataframe(pata, tipo_pata):
                     'moneda_pago', 'codigo_indice_fx', 'valor_indice_fx',
                     'amort_moneda_pago', 'interes_moneda_pago']
     else:
-        cols = list(Qcf.get_column_names(switcher[tipo_pata], ''))
+        cols = list(qcf.get_column_names(switcher[tipo_pata], ''))
         
-    rows =[Qcf.show(cashflow) for cashflow in [pata.get_cashflow_at(i) for i in range(pata.size())]]
+    rows =[qcf.show(cashflow) for cashflow in [pata.get_cashflow_at(i) for i in range(pata.size())]]
     df = pd.DataFrame(rows)
     df.columns = cols
     return df

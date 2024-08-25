@@ -35,3 +35,7 @@ launch_buttons:
   notebook_interface: "classic"  # or "jupyterlab"
   # binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
   colab_url: "https://colab.research.google.com"
+
+sphinx:
+  config:
+    html_extra_path: ['html_extra']
