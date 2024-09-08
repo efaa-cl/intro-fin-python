@@ -16,7 +16,7 @@ chapters:
 - file: 03_02_b_renta_fija
 - file: 03_02_c_renta_fija
 - file: 04_01_a_intro_sql
-#- file: 04_01_b_intro_sql
+- file: 04_01_b_intro_sql
 #- file: 04_02_a_intro_sql
 #- file: 04_03_a_intro_sql
 #- file: 05_01_a_trading
